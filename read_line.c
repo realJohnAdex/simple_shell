@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define RED "\033[0;31m"
-#define RESET "\e[0m"
 
 /**
  * read_line - to read a line of user command
@@ -21,7 +19,7 @@ char *read_line()
 
 	if (!buffer)
 	{
-		fprintf(stderr, "%sdash: Allocation error%s\n", RED, RESET);
+		dprintf(STDERR_FILENO, "Allocation error\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -46,7 +44,7 @@ char *read_line()
 
 			if (!buffer)
 			{
-				fprintf(stderr, "dash: Allocation error\n");
+				dprintf(STDERR_FILENO, "Allocation error\n");
 				exit(EXIT_FAILURE);
 			}
 		}
