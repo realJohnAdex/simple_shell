@@ -1,52 +1,30 @@
-#include <unistd.h>
 #include <stdio.h>
-#include <stdarg.h>
 #include <stdlib.h>
-#include <string.h>
-
 
 /**
- * read_line - to read a line of user command
+ * main - prints "$ ", wait for the user input, prints it on the next line
  *
- * Return: Always zero
+ * Return: always zero
  */
-char *read_line()
+
+int main()
 {
-	int buffsize = 1024;
-	int position = 0;
-	char * buffer = malloc(sizeof(char) * buffsize);
-	int c;
-
-	if (!buffer)
+	int bytes_read;
+	size_t size = 1024;
+	char *string;
+	
+	printf ("$ ");
+	/* These 2 lines are very important. */
+	string = (char *) malloc (size);
+	bytes_read = getline(&string, &size, stdin);
+	
+	if (bytes_read == -1)
 	{
-		dprintf(STDERR_FILENO, "Allocation error\n");
-		exit(EXIT_FAILURE);
-	}
-
-	while (1)
+		printf("ERROR!");
+	} else
 	{
-		c = getchar();
-		if (c == EOF || c == '\n')
-		{
-			//printf("\n");
-			buffer[position] = '\0';
-			return buffer;
-		} else
-		{
-			buffer[position] = c;
-		}
-		position++;
-
-		if (position >= buffsize)
-		{
-			buffsize += 1024;
-			buffer = realloc(buffer, buffsize);
-
-			if (!buffer)
-			{
-				dprintf(STDERR_FILENO, "Allocation error\n");
-				exit(EXIT_FAILURE);
-			}
-		}
+		printf("%s", string);
 	}
+	
+	return (0);
 }
