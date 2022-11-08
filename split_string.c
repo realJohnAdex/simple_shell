@@ -12,7 +12,7 @@ char **str_split(char *str, int *number_of_words);
 int main ()
 {
 	int nwords = 0;
-	char str[] = "Hello World";
+	char str[] = "Hello World, please tokenise this";
 
 	char **arr = str_split(str, &nwords);
 
