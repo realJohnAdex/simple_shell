@@ -9,8 +9,10 @@
 
 #define TOK_DELIM " \t\r\n"
 
-char *read_line();
 char *_readline();
+char **str_split(char *str, int *number_of_words);
+
+char *read_line();
 char **split_line(char *line);
 int get_input(char *str);
 

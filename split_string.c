@@ -1,29 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-char **str_split(char *str, int *number_of_words);
-
-/**
- * main- Entry point
- * 
- * Return: always zero
- */
-int main ()
-{
-	int nwords = 0;
-	char str[] = "Hello World, please tokenise this";
-
-	char **arr = str_split(str, &nwords);
-
-	for (int i = 0; i < nwords; i++)
-	{
-		printf ("word %d: %s\n", i, arr[i]);
-	}
-	free(arr);
-	// Needs to free allocated memory...
-	return (0);
-}
+#include "shell.h"
 
 /**
  * str_split - Splits a string
