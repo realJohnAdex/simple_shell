@@ -1,30 +1,48 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "shell.h"
+
 
 /**
- * main - prints "$ ", wait for the user input, prints it on the next line
+ * read_line - to read a line of user command
  *
- * Return: always zero
+ * Return: Always zero
  */
-
-int main()
+char *read_line()
 {
-	int bytes_read;
-	size_t size = 1024;
-	char *string;
-	
-	printf ("$ ");
-	/* These 2 lines are very important. */
-	string = (char *) malloc (size);
-	bytes_read = getline(&string, &size, stdin);
-	
-	if (bytes_read == -1)
+	int buffsize = 1024;
+	int position = 0;
+	char * buffer = malloc(sizeof(char) * buffsize);
+	int c;
+
+	if (!buffer)
 	{
-		printf("ERROR!");
-	} else
-	{
-		printf("%s", string);
+		dprintf(STDERR_FILENO, "Allocation error\n");
+		exit(EXIT_FAILURE);
 	}
-	
-	return (0);
+
+	while (1)
+	{
+		c = getchar();
+		if (c == EOF || c == '\n')
+		{
+			//printf("\n");
+			buffer[position] = '\0';
+			return buffer;
+		} else
+		{
+			buffer[position] = c;
+		}
+		position++;
+
+		if (position >= buffsize)
+		{
+			buffsize += 1024;
+			buffer = realloc(buffer, buffsize);
+
+			if (!buffer)
+			{
+				dprintf(STDERR_FILENO, "Allocation error\n");
+				exit(EXIT_FAILURE);
+			}
+		}
+	}
 }
