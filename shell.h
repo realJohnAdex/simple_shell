@@ -1,6 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+ simple_shell
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -69,3 +70,21 @@ int exit(char **args)
 }
 
 #endif /* SHELL_H*/
+=======
+#include <unistd.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TOK_DELIM " \t\r\n"
+
+char *_readline();
+char **str_split(char *str, int *number_of_words);
+
+char *read_line();
+char **split_line(char *line);
+int get_input(char *str);
+
+#endif /* SHELL_H */
+ main
