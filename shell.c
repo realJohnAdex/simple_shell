@@ -10,19 +10,27 @@ int main(void)
 	int nwords = 0;
 	char *in_str;
 	char **arr, **argv;
+	int status = 1;
 
-	in_str = _readline();
-	arr = str_split(in_str, &nwords);
-	argv = (char **)malloc(sizeof(char *) * (nwords + 1));
-	argv = arr;
-	argv[nwords] = NULL;
-
-	printf("Before execve\n");
-	if (execve(argv[0], argv, NULL) == -1)
+	while (status)
 	{
-		perror("Error:");
+		in_str = _readline();
+		arr = str_split(in_str, &nwords);
+		argv = (char **)malloc(sizeof(char *) * (nwords + 1));
+		argv = arr;
+		argv[nwords] = NULL;
+
+		if (strcmp(argv[0], "exit") == 0)
+		{
+			status = 0;
+		}
+		printf("Before execve\n");
+		if (execve(argv[0], argv, NULL) == -1)
+		{
+			perror("Error:");
+		}
+		printf("After execve\n");
 	}
-	printf("After execve\n");
 	
 	free(arr);
 	return (0);
