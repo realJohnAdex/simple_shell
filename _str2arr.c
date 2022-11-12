@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * str_split - Splits a string
+ * str_split - Splits a strig
  * @str: The string that will be splited
- * 
+ * @number_of_words: index of words in the string to be splited
+ *
  * Return: On success, it returns the new array
  * of strings. On failure, it returns NULL
  */
@@ -16,7 +17,7 @@ char **str_split(char *str, int *number_of_words)
 	{
 		return (NULL);
 	}
-	str_cpy = strdup (str);
+	str_cpy = strdup str);
 	piece = strtok(str_cpy, " ");
 	while (piece != NULL)
 	{
@@ -44,7 +45,7 @@ char **str_split(char *str, int *number_of_words)
 	}
 
 	if (str_cpy)
-		free (str_cpy);
+		free(str_cpy);
 
 	return (str_arr);
 }

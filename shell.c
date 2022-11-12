@@ -25,7 +25,7 @@ int main(void)
 	printf("After execve\n");
 	for (int i = 0; i < nwords; i++)
 	{
-		printf ("word %d: %s\n", i, arr[i]);
+		printf("word %d: %s\n", i, arr[i]);
 	}
 	free(arr);
 	printf("%s", in_str);

@@ -12,15 +12,15 @@ char *_readline()
 	size_t size = 1024;
 	char *string;
 
-	printf ("$ ");
+	printf("$ ");
 	/* These 2 lines are very important. */
-	string = (char *) malloc (size);
+	string = (char *) malloc(size);
 	bytes_read = getline(&string, &size, stdin);
 
 	if (bytes_read == -1)
 	{
 		printf("ERROR!");
-		return(NULL);
+		return (NULL);
 	}
 
 	return (string);
