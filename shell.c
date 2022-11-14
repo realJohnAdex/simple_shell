@@ -7,17 +7,14 @@
  */
 int main(void)
 {
-	int i;
 	int nwords = 0;
 	char *in_str;
 	char **arr, **argv;
 	int status = 1;
 
-	i = 0;
 	while (status)
 	{
 
-		printf("word %d: %s\n", i, arr[i]);
 		in_str = _readline();
 		arr = str_split(in_str, &nwords);
 		argv = (char **)malloc(sizeof(char *) * (nwords + 1));
