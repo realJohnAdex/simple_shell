@@ -17,7 +17,7 @@ char **str_split(char *str, int *number_of_words)
 	{
 		return (NULL);
 	}
-	str_cpy = strdup str);
+	str_cpy = strdup(str);
 	piece = strtok(str_cpy, " ");
 	while (piece != NULL)
 	{
