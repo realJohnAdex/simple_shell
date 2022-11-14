@@ -7,16 +7,17 @@
  */
 int main(void)
 {
+	int i;
 	int nwords = 0;
 	char *in_str;
 	char **arr, **argv;
 	int status = 1;
 
+	i = 0;
 	while (status)
 	{
-<<<<<<< HEAD
+
 		printf("word %d: %s\n", i, arr[i]);
-=======
 		in_str = _readline();
 		arr = str_split(in_str, &nwords);
 		argv = (char **)malloc(sizeof(char *) * (nwords + 1));
@@ -33,9 +34,7 @@ int main(void)
 			perror("Error:");
 		}
 		printf("After execve\n");
->>>>>>> 1f6e46f49373ce6c0bf01ce9b18e04ed710aea93
 	}
-	
 	free(arr);
 	return (0);
 }
