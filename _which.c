@@ -27,7 +27,9 @@ int main(int ac, char **av)
 			{
 				if (strcmp(dir->d_name, av[i]) == 0)
 				{
-					printf(" FOUND: %s\n", av[i]);
+					// check if file, not (sym)link, dir, etc
+					if (dir->d_type == DT_REG)
+						printf(" FOUND: %s\n", av[i]);
 				}
 			}
 		}
