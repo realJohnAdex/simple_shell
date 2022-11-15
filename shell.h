@@ -7,7 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TOK_DELIM " \t\r\n"
+/* environment variable */
+extern char **environ;
 
 char *_readline();
 char **str_split(char *str, int *number_of_words);
