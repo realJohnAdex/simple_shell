@@ -1,8 +1,8 @@
-#include <stdio.h>
 #include "shell.h"
 
-
-extern char **environ;
+char *_getenv(const char *name);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
 
 /**
  * _getenv - get an environment variable
