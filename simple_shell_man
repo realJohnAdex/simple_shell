@@ -1,22 +1,22 @@
-.TH HSH 1
+.TH HSH 1i
 .SH NAME
 hsh \- Simple Shell
 .SH SYNOPSIS
 .B hsh
-[command] [options ...]
+[command][options ...]
 .SH COPYRIGHT
 hsh \- is an alx group project
 .SH DESCRIPTION
 .B hsh
-is a shell command interpreter that executes command read from the standard input or from file.
+is a shell command interpreter it executes command read from the standard input or from file.
 .B hsh
-is intend to be a clone of the standard command interpreter of 
+is intend to be a clone of the standard command interpreter of
 .B Unix
-and 
+and
 .B Unix-like
 system.
 .SH OPTIONS
-A  simple command is a sequence of optional variable assignments followed by blank-separated words and redirections, 
+A simple command is a sequence of optional variable assignments followed by blank-separated words and redirections,
 and terminated by a control operator.  The first word specifies the command to be
 executed, and is passed as argument zero.  The remaining words are passed as arguments to the invoked command.
 .PP
