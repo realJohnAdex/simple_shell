@@ -1,1 +1,2 @@
 Generally, a shell is a program that executes other programs in response to text commands. A sophisticated shell can also change the environment in which other programs execute by passing named variables, a parameter list, or an input source.In Unix-like operating systems, users typically have many choices of command-line interpreters for interactive sessions.
+The Thompson shell was the first Unix shell, introduced in the first version of Unix in 1971, and was written by Ken Thompson.
