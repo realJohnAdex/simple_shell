@@ -60,27 +60,34 @@ typedef struct alias_s
 alias_t *aliases;
 
 /* Main Helpers */
+
+//file getline.c
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-char **_strtok(char *line, char *delim);
+
+char **_strtok(char *line, char *delim); //file: divide.c
 char *get_location(char *command);
-list_t *get_path_dir(char *path);
+list_t *get_path_dir(char *path); //file: locate.c
 int execute(char **args, char **front);
 void free_list(list_t *head);
 char *_itoa(int num);
 
 /* Input Helpers */
-void handle_line(char **line, ssize_t read);
-void variable_replacement(char **args, int *exe_ret);
+void handle_line(char **line, ssize_t read); //helper_2.c
+char **replace_aliases(char **args);
+
+//file: input_helpers.c
 char *get_args(char *line, int *exe_ret);
 int call_args(char **args, char **front, int *exe_ret);
 int run_args(char **args, char **front, int *exe_ret);
 int handle_args(int *exe_ret);
 int check_args(char **args);
-void free_args(char **args, char **front);
-char **replace_aliases(char **args);
 
-/* String functions */
+//file: helper.c
+void free_args(char **args, char **front);
+void variable_replacement(char **args, int *exe_ret);
+
+/* String functions - file: str_func1 & str_func2 */
 int _strlen(const char *s);
 char *_strcat(char *dest, const char *src);
 char *_strncat(char *dest, const char *src, size_t n);
@@ -90,23 +97,27 @@ int _strspn(char *s, char *accept);
 int _strcmp(char *s1, char *s2);
 int _strncmp(const char *s1, const char *s2, size_t n);
 
-/* Builtins */
+/* Builtins - file: initial_builtin.c */
 int (*get_builtin(char *command))(char **args, char **front);
 int shellby_exit(char **args, char **front);
+int shellby_cd(char **args, char __attribute__((__unused__)) **front);
+int shellby_alias(char **args, char __attribute__((__unused__)) **front); //builtin.c
+int shellby_help(char **args, char __attribute__((__unused__)) **front);
+
+//file: env_builtins.c
 int shellby_env(char **args, char __attribute__((__unused__)) **front);
 int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
 int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_alias(char **args, char __attribute__((__unused__)) **front);
-int shellby_help(char **args, char __attribute__((__unused__)) **front);
 
-/* Builtin Helpers */
+/* Builtin Helpers - file: env.c */
 char **_copyenv(void);
 void free_env(void);
 char **_getenv(const char *var);
 
 /* Error Handling */
-int create_error(char **args, int err);
+int create_error(char **args, int err); //errors.c
+
+//file: errors_msg_1.c & errors_msg_2.c
 char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);
@@ -115,12 +126,13 @@ char *error_2_syntax(char **args);
 char *error_126(char **args);
 char *error_127(char **args);
 
-/* Linkedlist Helpers */
+/* Linkedlist Helpers - file: linkedlist.c */
 alias_t *add_alias_end(alias_t **head, char *name, char *value);
 void free_alias_list(alias_t *head);
 list_t *add_node_end(list_t **head, char *dir);
 void free_list(list_t *head);
 
+// file: builtin_func.c & builtin_func1.c
 void help_all(void);
 void help_alias(void);
 void help_cd(void);
@@ -131,5 +143,7 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
 
+//file: file_commands.c
 int proc_file_commands(char *file_path, int *exe_ret);
+
 #endif /* _SHELL_H_ */
