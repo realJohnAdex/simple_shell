@@ -61,29 +61,33 @@ alias_t *aliases;
 
 /* Main Helpers */
 
-//file getline.c
+/* file: getline.c */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
-char **_strtok(char *line, char *delim); //file: divide.c
+/* file: divide.c */
+char **_strtok(char *line, char *delim);
 char *get_location(char *command);
-list_t *get_path_dir(char *path); //file: locate.c
+
+/* file: locate.c */
+list_t *get_path_dir(char *path);
 int execute(char **args, char **front);
 void free_list(list_t *head);
 char *_itoa(int num);
 
 /* Input Helpers */
-void handle_line(char **line, ssize_t read); //helper_2.c
+/* file: helper_2.c */
+void handle_line(char **line, ssize_t read);
 char **replace_aliases(char **args);
 
-//file: input_helpers.c
+/* file: input_helpers.c */
 char *get_args(char *line, int *exe_ret);
 int call_args(char **args, char **front, int *exe_ret);
 int run_args(char **args, char **front, int *exe_ret);
 int handle_args(int *exe_ret);
 int check_args(char **args);
 
-//file: helper.c
+/* file: helper.c */
 void free_args(char **args, char **front);
 void variable_replacement(char **args, int *exe_ret);
 
@@ -101,10 +105,11 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 int (*get_builtin(char *command))(char **args, char **front);
 int shellby_exit(char **args, char **front);
 int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_alias(char **args, char __attribute__((__unused__)) **front); //builtin.c
+/* file: builtin.c */
+int shellby_alias(char **args, char __attribute__((__unused__)) **front);
 int shellby_help(char **args, char __attribute__((__unused__)) **front);
 
-//file: env_builtins.c
+/* file: env_builtins.c */
 int shellby_env(char **args, char __attribute__((__unused__)) **front);
 int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
 int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
@@ -115,9 +120,10 @@ void free_env(void);
 char **_getenv(const char *var);
 
 /* Error Handling */
-int create_error(char **args, int err); //errors.c
+/* file: errors.c */
+int create_error(char **args, int err);
 
-//file: errors_msg_1.c & errors_msg_2.c
+/* file: errors_msg_1.c & errors_msg_2.c */
 char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);
@@ -132,7 +138,7 @@ void free_alias_list(alias_t *head);
 list_t *add_node_end(list_t **head, char *dir);
 void free_list(list_t *head);
 
-// file: builtin_func.c & builtin_func1.c
+/* file: builtin_func.c & builtin_func1.c */
 void help_all(void);
 void help_alias(void);
 void help_cd(void);
@@ -143,7 +149,7 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
 
-//file: file_commands.c
+/* file: file_commands.c */
 int proc_file_commands(char *file_path, int *exe_ret);
 
 #endif /* _SHELL_H_ */
